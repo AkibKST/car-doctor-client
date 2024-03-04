@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const NavBar = () => {
 
@@ -9,8 +10,13 @@ const NavBar = () => {
 
     const handleLogOut = () =>{
         logOut()
-        .then()
-        .catch(error => {console.log(error)})
+        .then(() => {})
+        .catch(error => {Swal.fire({
+            title: 'Error!',
+            text: {error},
+            icon: 'error',
+            confirmButtonText: 'Got it!'
+          })})
     }
 
     const navItems = <>
